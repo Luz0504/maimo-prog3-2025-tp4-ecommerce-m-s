@@ -8,11 +8,10 @@ const NavBar = () => {
         <div className='flex justify-between items-center px-10 bg-blue-500 py-2 rounded-t-4xl'>
             <ul className='flex gap-3'>
                 <li>CATEGORIAS</li>
-                <li>COLECCIONES</li>
                 <li>GIFT CARDS</li>
                 <li>AYUDA</li>
+                <li>ACCESIBILIDAD</li>
                 <li>DEVOLUCIONES</li>
-
             </ul>
             <ul className='flex gap-3'>
                 <li><Image
