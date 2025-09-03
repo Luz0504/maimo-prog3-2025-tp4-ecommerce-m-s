@@ -4,7 +4,6 @@ import FGFooter from "./components/FGFooter";
 export default function Home() {
   return (
     <>
-      <FGFooter/>
     </>
   );
 }
