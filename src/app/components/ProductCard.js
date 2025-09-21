@@ -2,7 +2,7 @@ import Image from "next/image"
 
 const ProductCard = () => {
   return (
-    <div className="flex flex-col w-60 p-4 bg-white rounded-2xl gap-2 border-black border-[2px] text-black transition-transform duration-300 ease-in-out hover:scale-105">
+    <div className="flex flex-col p-4 bg-white rounded-2xl gap-2 border-black border-[2px] text-black transition-transform duration-300 ease-in-out hover:scale-105">
         <div className='flex justify-center'>
             <Image
             src={'/assets/ralseiplush.png'}
