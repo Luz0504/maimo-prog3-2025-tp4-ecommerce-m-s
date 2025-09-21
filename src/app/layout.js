@@ -25,6 +25,7 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <NavBar/>
+        <SearchBar/>
         {children}
         <FGFooter/>
       </body>
