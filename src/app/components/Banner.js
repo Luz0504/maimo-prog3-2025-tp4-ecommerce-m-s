@@ -1,9 +1,14 @@
+import Image from "next/image"
+
 const Banner = () => {
   return (
-    <div className='flex border-2 h-[200px] border-black bg-fuchsia-500'>
-        <p>
-            Pruebaa
-        </p>
+    <div className='w-full mb-7 border-2 h-[200px] rounded-3xl border-black bg-fuchsia-500 flex justify-items-center overflow-hidden'>
+           <Image
+            src={'/assets/sunny.jpg'}
+            width={1000}
+            height={50}
+            alt='snuuy'
+            />
     </div>
   )
 }
