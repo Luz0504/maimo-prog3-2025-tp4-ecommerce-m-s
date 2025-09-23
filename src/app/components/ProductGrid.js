@@ -9,6 +9,7 @@ import { useAppContext } from "@/context/ShopContext";
 const ProductGrid = () => {
 
     const {getAllProducts} = useAppContext();
+    //test comment
 
     const [data, setData] = useState([])
     const [error, setError] = useState(false)
