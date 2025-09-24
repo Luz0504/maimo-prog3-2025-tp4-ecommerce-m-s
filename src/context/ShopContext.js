@@ -1,7 +1,7 @@
 'use client'
 
 import axios from 'axios';
-import {useState, useContext, createContext, useEffect} from 'react';
+import {useState, useContext, createContext, useEffect, useCallback} from 'react';
 
 const ShopContext = createContext();
 
@@ -27,7 +27,6 @@ export const AppContextProvider = ({children}) => {
 
     const getAllProducts = (setData,setError,setLoading) => {
 
-
         const getData = async () => {
             try {
                 const response = await axios.get('https://maimo-prog3-2025-api-blank.vercel.app/products')
@@ -44,12 +43,27 @@ export const AppContextProvider = ({children}) => {
         getData();
     }
 
+    const getOneProduct = (setProduct,setError,setLoading,id) => {
+
+        const getProduct = async () => {
+            try {
+                const response = await axios.get(`https://maimo-prog3-2025-api-blank.vercel.app/products/${id}`);
+                setProduct(response.data.product);
+                setLoading(false)
+            } catch (error) {
+                setError(true)
+                setLoading(false)
+            }
+        }
+        getProduct();
+    }
+
         useEffect(() => {console.log(cart)}, [cart]);
 
 
     return(
         <ShopContext.Provider 
-        value={{favorites: cart,removeFromCart,addToCart,cartQty, getAllProducts}}>
+        value={{favorites: cart,removeFromCart,addToCart,cartQty, getAllProducts, getOneProduct}}>
             {children}
         </ShopContext.Provider>
     )
