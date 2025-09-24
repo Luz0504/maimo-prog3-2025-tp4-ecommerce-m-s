@@ -14,11 +14,11 @@ const ProductContainer = ({id}) => {
     const [error, setError] = useState(false)
     const [loading, setLoading] = useState(true)
 
+        const {getOneProduct} = useAppContext();
+
     useEffect(() => {
         getOneProduct(setProduct,setError,setLoading,id);
-    }, [])
-
-    const {getOneProduct} = useAppContext();
+      }, [])
 
   
   return (
@@ -44,10 +44,11 @@ const ProductContainer = ({id}) => {
                 <h1 className='text-black text-6xl mb-2'>{product.name}</h1>
                 <p className='text-black text-4xl'>{product.price}</p>
               </div>
-              <Link href={""} className='bg-fuchsia-900 text-white p-3 rounded-2xl w-fit text-2xl'>¡Lo Quiero!</Link>
+              <Link href={""} className='bg-fuchsia-900 text-white p-3 rounded-2xl w-fit text-2xl border-2 border-black'>¡Lo Quiero!</Link>
             </div>
+            <p>{}</p>
           </section>
-              <p>{product.desc}</p>
+              <p className='italic text-gray-900 mb-2'>&#8223; {product.desc} &#8221;</p>
           <table className='w-full'>
             <tbody>
               <tr className='bg-fuchsia-200'>
