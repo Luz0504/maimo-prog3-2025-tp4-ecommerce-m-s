@@ -29,6 +29,7 @@ const ProductGrid = () => {
                     name={product.name}
                     price={product.price}
                     key={product._id}
+                    id={product._id}
                 />
         ))}
 
