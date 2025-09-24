@@ -1,4 +1,4 @@
-import React from 'react'
+import Link from 'next/link'
 import Image from 'next/image'
 
 const NavBar = () => {
@@ -14,18 +14,12 @@ const NavBar = () => {
                 <li>DEVOLUCIONES</li>
             </ul>
             <ul className='flex gap-3'>
-                <li><Image
-                src={'/assets/acc.png'}
-                alt={"Your acc"}
-                height={30}
-                width={30}
-                /></li>
-                <li><Image
+                <Link href={'/cart'}><li><Image
                 src={'/assets/cart.png'}
                 alt={"Your cart"}
                 height={30}
                 width={30}
-                /></li>
+                /></li></Link>
 
             </ul>
         </div>

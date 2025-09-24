@@ -14,8 +14,7 @@ const ProductCard = ({ id, name, price, img }) => {
       <Link
         href={`/product/${id}`}
         className="bg-blue-400 rounded-3xl border-black border-[2px] p-1 duration-100 ease-in-out hover:bg-blue-500 hover:cursor-pointer text-center"
-      >
-        <button>Ver más</button>
+      >Ver más
       </Link>
     </div>
   );
