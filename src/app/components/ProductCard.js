@@ -10,7 +10,7 @@ import QuitarCart from "./QuitarCart";
 const ProductCard = ({ id, name, price, img }) => {
 
   const { cart, addToCart, removeFromCart } = useAppContext();
-  const isCart = cart.some(cartitem => cartitem.id === id);
+  const isCart = cart.some(cartitem => cartitem.id == id);
 
   return (
     <div className="flex flex-col p-4 bg-white rounded-2xl gap-2 border-black border-[2px] text-black transition-transform duration-300 ease-in-out hover:scale-105">

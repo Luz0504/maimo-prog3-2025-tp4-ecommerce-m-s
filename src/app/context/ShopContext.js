@@ -13,19 +13,16 @@ export const AppContextProvider = ({ children }) => {
   }, [cart]);
 
   const addToCart = (name, img, categories, id) => {
-    cart.find(
-      (cartitem) => cartitem.name === name && cartitem.category === category
-    )
-      ? alert("Ya se añadió ese")
-      : setCart([...cart, { name, id, img, categories }]);
+    const dupli = cart.some(cartitem => cartitem.id == id);
+
+        if(!dupli) {
+            setCart([...cart, { name, id }]);
+        }
   };
 
-  const removeFromCart = (name, img, categories, id) => {
-    setCart(
-      cart.filter(
-        (cartitem) => cartitem.name !== name || cartitem.category !== category
-      )
-    );
+  const removeFromCart = (id) => {
+     const updateCart = cart.filter(cartitem => cartitem.id !== id);
+            setCart(updateCart);
   };
 
   const cartQty = cart.length;
