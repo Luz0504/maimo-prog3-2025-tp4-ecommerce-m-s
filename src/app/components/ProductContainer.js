@@ -56,7 +56,6 @@ const ProductContainer = ({ id }) => {
                 ¡Lo Quiero!
               </Link>
             </div>
-            <p>{}</p>
           </section>
           <p className="italic text-gray-900 mb-2">
             &#8223; {product.desc} &#8221;
