@@ -60,15 +60,30 @@ export const AppContextProvider = ({children}) => {
     const getAllCategories = (setCategories, setError, setLoading) => {
         const getCategories = async() => {
                   try {
-                const response = await axios.get('https://maimo-prog3-2025-api-blank.vercel.app/categories')
-                const responseData  = response.data.categories;
-                setCategories(responseData);
+                const response = await axios.get('https://maimo-prog3-2025-api-blank.vercel.app/categories');
+                setCategories(response.data.categories);
                 setLoading(false)
             } catch (error) {
                 setError(true);
             }
             }
                 getCategories();
+            }
+
+            const getCategoryProducts = (setData, setError, setLoading, id) => {
+                const getSlug = async() => {
+                        try {
+                        const response = await axios.get(`https://maimo-prog3-2025-api-blank.vercel.app/categories/${id}/products`)
+                        const responseData  = response.data.products;
+                        setData(responseData);
+                        console.log("Worked")
+                        setLoading(false)
+                    } catch (error) {
+                        setError(true);
+                        console.log("Did not")
+                    }
+                    }
+                getSlug();
             }
             
 
@@ -77,7 +92,7 @@ export const AppContextProvider = ({children}) => {
 
     return(
         <ShopContext.Provider 
-        value={{favorites: cart,removeFromCart,addToCart,cartQty, getAllProducts, getOneProduct, getAllCategories}}>
+        value={{favorites: cart,removeFromCart,addToCart,cartQty, getAllProducts, getOneProduct, getAllCategories, getCategoryProducts}}>
             {children}
         </ShopContext.Provider>
     )
