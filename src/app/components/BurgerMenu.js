@@ -20,10 +20,11 @@ const BurgerMenu = () => {
   return (
     <>
        {!loading &&
-       <div className='bg-blue-300 text-black text-center flex flex-col w-[28em] rounded-t-[3em] p-5'>
+       <div className='bg-blue-300 text-black text-center flex flex-col w-[28em] rounded-t-[3em] p-5 pt-8'>
+       <h2>Product Types</h2>
        {
         categories.filter(cat => cat.type === "1").map(cat =>
-          <li key={cat._id}>{cat.name}</li>
+          <li key={cat._id} className='text-left list-none m-1'>{cat.name}</li>
         )
         }
         </div>
