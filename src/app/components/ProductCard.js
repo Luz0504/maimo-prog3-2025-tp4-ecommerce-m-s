@@ -6,7 +6,7 @@ const ProductCard = ({ id, name, price, img }) => {
     <div className="flex flex-col p-4 bg-white rounded-2xl gap-2 border-black border-[2px] text-black transition-transform duration-300 ease-in-out hover:scale-105">
         <div className='flex justify-center'>
             <Image
-            src={'/assets/sunny.jpg'}
+            src={img}
             height={500}
             width={150}
             alt={name}
