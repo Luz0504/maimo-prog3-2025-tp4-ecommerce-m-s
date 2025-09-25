@@ -38,7 +38,7 @@ const BurgerMenu = () => {
         </div>
        }
 
-       {loading && error && <p>VETER A LA MIERDA</p>}
+       {loading && error && <p>Lol. LMAO</p>}
     </>
   )
 }
