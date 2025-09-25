@@ -12,7 +12,7 @@ export const AppContextProvider = ({ children }) => {
     console.log(cart);
   }, [cart]);
 
-  const addToCart = (name, img, categories) => {
+  const addToCart = (name, img, categories, id) => {
     cart.find(
       (cartitem) => cartitem.name === name && cartitem.category === category
     )
@@ -56,7 +56,7 @@ export const AppContextProvider = ({ children }) => {
   return (
     <ShopContext.Provider
       value={{
-        favorites: cart,
+        cart,
         removeFromCart,
         addToCart,
         cartQty,

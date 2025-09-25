@@ -4,7 +4,7 @@
 import {useState, useEffect} from "react"
 import axios from 'axios';
 import ProductCard from './ProductCard'
-import { useAppContext } from "@/context/ShopContext";
+import { useAppContext } from "@/app/context/ShopContext";
 
 const ProductGrid = () => {
 

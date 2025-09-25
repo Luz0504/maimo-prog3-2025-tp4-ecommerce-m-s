@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import CartContainer from '../components/CartContainer'
 
 const page = ({ id, name, price, img }) => {
   return (

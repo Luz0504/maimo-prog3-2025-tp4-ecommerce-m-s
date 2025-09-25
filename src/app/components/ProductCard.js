@@ -1,7 +1,17 @@
+'use client'
+
 import Image from "next/image";
 import Link from "next/link";
+import { useAppContext } from "@/app/context/ShopContext";
+import AgregarCart from "./AgregarCart";
+import QuitarCart from "./QuitarCart";
+
 
 const ProductCard = ({ id, name, price, img }) => {
+
+  const { cart, addToCart, removeFromCart } = useAppContext();
+  const isCart = cart.some(cartitem => cartitem.id === id);
+
   return (
     <div className="flex flex-col p-4 bg-white rounded-2xl gap-2 border-black border-[2px] text-black transition-transform duration-300 ease-in-out hover:scale-105">
       <div className="flex justify-center">
@@ -16,6 +26,12 @@ const ProductCard = ({ id, name, price, img }) => {
         className="bg-blue-400 rounded-3xl border-black border-[2px] p-1 duration-100 ease-in-out hover:bg-blue-500 hover:cursor-pointer text-center"
       >Ver más
       </Link>
+
+      {isCart ? (
+          <QuitarCart onClick={() => removeFromCart(id)} />
+        ) : (
+          <AgregarCart onClick={() => addToCart(name, price, id)} />
+        )}
     </div>
   );
 };
