@@ -9,16 +9,13 @@ import Link from "next/link";
 import Image from "next/image";
 
 const ProductContainer = ({ id }) => {
-  const [product, setProduct] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(true);
 
-  const { getOneProduct, getAllCategories } = useAppContext();
+
+  const { getOneProduct, getAllCategories, loading, error, product, categories} = useAppContext();
 
   useEffect(() => {
-    getOneProduct(setProduct, setError, setLoading, id);
-    getAllCategories(setCategories, setError, setLoading);
+    getOneProduct(id);
+    getAllCategories();
   }, []);
 
   return (
@@ -39,7 +36,7 @@ const ProductContainer = ({ id }) => {
             <div className="flex flex-col ml-4 justify-around">
               <div>
                 <Link href={""} className="text-2xl">
-                  {product.categories.map((id) => {
+                                   {product.categories.map((id) => {
                     const match = categories.find(
                       (cat) => cat._id === id && cat.type === "0"
                     );

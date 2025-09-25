@@ -7,6 +7,11 @@ const ShopContext = createContext();
 
 export const AppContextProvider = ({children}) => {
     const [cart, setCart] = useState([]);
+    const [product, setProduct] = useState([]);
+    const [data, setData] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const [error, setError] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         console.log(cart)
@@ -25,7 +30,7 @@ export const AppContextProvider = ({children}) => {
 
     const cartQty = cart.length;
 
-    const getAllProducts = (setData,setError,setLoading) => {
+    const getAllProducts = () => {
 
         const getData = async () => {
             try {
@@ -33,17 +38,15 @@ export const AppContextProvider = ({children}) => {
                 const responseData  = response.data.products;
                 setData(responseData);
                 setLoading(false)
-                console.log("worked")
             } catch (error) {
                 setError(true)
                 setLoading(false)
-                console.log("did not work")
             }
         }
         getData();
     }
 
-    const getOneProduct = (setProduct,setError,setLoading,id) => {
+    const getOneProduct = (id) => {
 
         const getProduct = async () => {
             try {
@@ -57,7 +60,7 @@ export const AppContextProvider = ({children}) => {
         getProduct();
     }
 
-    const getAllCategories = (setCategories, setError, setLoading) => {
+    const getAllCategories = () => {
         const getCategories = async() => {
                   try {
                 const response = await axios.get('https://maimo-prog3-2025-api-blank.vercel.app/categories');
@@ -70,7 +73,7 @@ export const AppContextProvider = ({children}) => {
                 getCategories();
             }
 
-            const getCategoryProducts = (setData, setError, setLoading, id) => {
+            const getCategoryProducts = (id) => {
                 const getSlug = async() => {
                         try {
                         const response = await axios.get(`https://maimo-prog3-2025-api-blank.vercel.app/categories/${id}/products`)
@@ -84,15 +87,14 @@ export const AppContextProvider = ({children}) => {
                     }
                     }
                 getSlug();
-            }
-            
+            }            
 
         useEffect(() => {console.log(cart)}, [cart]);
 
-
     return(
         <ShopContext.Provider 
-        value={{favorites: cart,removeFromCart,addToCart,cartQty, getAllProducts, getOneProduct, getAllCategories, getCategoryProducts}}>
+        value={
+            {favorites: cart,removeFromCart,addToCart,cartQty, getAllProducts, getOneProduct, getAllCategories, getCategoryProducts, loading, error, categories, product, data}}>
             {children}
         </ShopContext.Provider>
     )

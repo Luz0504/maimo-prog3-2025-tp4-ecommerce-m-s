@@ -8,14 +8,11 @@ import Link from 'next/link'
 
 const BurgerMenu = () => {
 
-  const {getAllCategories} = useAppContext();
+  const {getAllCategories, loading, error, categories} = useAppContext();
 
-  const [categories, setCategories] = useState([]);
-  const [error, setError] = useState(false)
-  const [loading, setLoading] = useState(true)
 
    useEffect(() => {
-        getAllCategories(setCategories,setError,setLoading);
+        getAllCategories();
     }, [])
     
   

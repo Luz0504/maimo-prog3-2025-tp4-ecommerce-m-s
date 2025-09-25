@@ -8,15 +8,10 @@ import { useAppContext } from "@/context/ShopContext";
 
 const ProductGrid = () => {
 
-    const {getAllProducts} = useAppContext();
-    //test comment
-
-    const [data, setData] = useState([])
-    const [error, setError] = useState(false)
-    const [loading, setLoading] = useState(true)
+    const {getAllProducts, data, error, loading} = useAppContext();
 
     useEffect(() => {
-        getAllProducts(setData,setError,setLoading);
+        getAllProducts();
     }, [])
 
   return (
