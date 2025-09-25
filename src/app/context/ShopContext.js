@@ -12,7 +12,7 @@ export const AppContextProvider = ({ children }) => {
     console.log(cart);
   }, [cart]);
 
-  const addToCart = (name, img, categories, id) => {
+  const addToCart = (name, img, id) => {
     const dupli = cart.some(cartitem => cartitem.id == id);
 
         if(!dupli) {
