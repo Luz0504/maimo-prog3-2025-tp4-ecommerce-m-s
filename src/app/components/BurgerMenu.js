@@ -1,22 +1,36 @@
+'use client'
+
+import { useAppContext } from '@/context/ShopContext'
 import React from 'react'
+import { useState,useEffect } from 'react'
 
 const BurgerMenu = () => {
+
+  const {getAllCategories} = useAppContext();
+
+  const [categories, setCategories] = useState([]);
+  const [error, setError] = useState(false)
+  const [loading, setLoading] = useState(true)
+
+   useEffect(() => {
+        getAllCategories(setCategories,setError,setLoading);
+    }, [])
+    
+  
   return (
-    <div className='bg-blue-300 text-black text-center flex flex-col w-[28em] rounded-t-[3em] p-5'>
-        <h1 className='py-3'>Categorías</h1>
-        <div className='py-3 border-t-2 hover:bg-blue-400 hover:cursor-pointer'>
-          <h2>Ropa</h2>
+    <>
+       {!loading &&
+       <div className='bg-blue-300 text-black text-center flex flex-col w-[28em] rounded-t-[3em] p-5'>
+       {
+        categories.filter(cat => cat.type === "1").map(cat =>
+          <li key={cat._id}>{cat.name}</li>
+        )
+        }
         </div>
-        <div className='py-3 border-t-2 hover:bg-blue-400 hover:cursor-pointer'>
-          <h2>Trinkets</h2>
-        </div>
-        <div className='py-3 border-t-2 hover:bg-blue-400 hover:cursor-pointer'>
-          <h2>Libros</h2>
-        </div>
-        <div className='py-3 border-t-2 hover:bg-blue-400 hover:cursor-pointer'>
-          <h2>Ropa</h2>
-        </div>
-    </div>
+       }
+
+       {loading && error && <p>VETER A LA MIERDA</p>}
+    </>
   )
 }
 

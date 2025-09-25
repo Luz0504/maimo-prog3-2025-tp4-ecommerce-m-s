@@ -1,73 +1,91 @@
-'use client'
+"use client";
 
-import axios from 'axios'
-import React from 'react'
+import axios from "axios";
+import React from "react";
 
-import { useState, useCallback, useEffect } from 'react'
-import { useAppContext } from '@/context/ShopContext'
-import Link from 'next/link'
-import Image from 'next/image'
+import { useState, useCallback, useEffect } from "react";
+import { useAppContext } from "@/context/ShopContext";
+import Link from "next/link";
+import Image from "next/image";
 
-const ProductContainer = ({id}) => {
+const ProductContainer = ({ id }) => {
+  const [product, setProduct] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-    const [product, setProduct] = useState([])
-    const [error, setError] = useState(false)
-    const [loading, setLoading] = useState(true)
+  const { getOneProduct, getAllCategories } = useAppContext();
 
-        const {getOneProduct} = useAppContext();
+  useEffect(() => {
+    getOneProduct(setProduct, setError, setLoading, id);
+    getAllCategories(setCategories, setError, setLoading);
+  }, []);
 
-    useEffect(() => {
-        getOneProduct(setProduct,setError,setLoading,id);
-      }, [])
-
-  
   return (
     <>
-        {!loading &&
-        <div className='text-black'>
-          <Link href="/">
-          Volver
-          </Link>
-          <section className='flex justify-center mb-5'>
+      {!loading && (
+        <div className="text-black">
+          <Link href="/">Volver</Link>
+          <section className="flex justify-center mb-5">
             <>
               <Image
-                src={'/assets/sunny.jpg'}
+                src={"/assets/sunny.jpg"}
                 height={100}
                 width={350}
-                alt='Snnuy'
-                className='rounded-2xl border-2 border-black'
+                alt="Snnuy"
+                className="rounded-2xl border-2 border-black"
               />
             </>
-            <div className='flex flex-col ml-4 justify-evenly'>
+            <div className="flex flex-col ml-4 justify-around">
               <div>
-                <Link href={""} className='text-2xl'>Videojuego</Link>
-                <h1 className='text-black text-6xl mb-2'>{product.name}</h1>
-                <p className='text-black text-4xl'>{product.price}</p>
+                <Link href={""} className="text-2xl">
+                  {product.categories.map((id) => {
+                    const match = categories.find(
+                      (cat) => cat._id === id && cat.type === "0"
+                    );
+                    return match ? match.name : null;
+                  })}
+                </Link>
+                <h1 className="text-black text-6xl mb-2">{product.name}</h1>
+                <p className="text-black text-4xl">{product.price}</p>
               </div>
-              <Link href={""} className='bg-fuchsia-900 text-white p-3 rounded-2xl w-fit text-2xl border-2 border-black'>¡Lo Quiero!</Link>
+              <Link
+                href={""}
+                className="bg-fuchsia-900 text-white p-3 rounded-2xl w-fit text-2xl border-2 border-black"
+              >
+                ¡Lo Quiero!
+              </Link>
             </div>
             <p>{}</p>
           </section>
-              <p className='italic text-gray-900 mb-2'>&#8223; {product.desc} &#8221;</p>
-          <table className='w-full'>
+          <p className="italic text-gray-900 mb-2">
+            &#8223; {product.desc} &#8221;
+          </p>
+          <table className="w-full">
             <tbody>
-              <tr className='bg-fuchsia-200'>
-                <td className='text-2xl p-2'>Videogame</td>
-                <td className='p-2'></td>
+              <tr className="bg-fuchsia-200">
+                <td className="text-2xl p-2">Category</td>
+                <td className="p-2">
+                  {product.categories.map((id) => {
+                    const match = categories.find(
+                      (cat) => cat._id === id && cat.type === "1"
+                    );
+                    return match ? match.name : null;
+                  })}
+                </td>
               </tr>
               <tr>
-                <td className='text-2xl p-2'>Tamaño</td>
-                <td className='p-2'>{product.size}</td>
+                <td className="text-2xl p-2">Tamaño</td>
+                <td className="p-2">{product.size}</td>
               </tr>
             </tbody>
           </table>
-        </div>}
+        </div>
+      )}
 
-        {loading && error &&
-        <p>Cargando...</p>
-        }
+      {loading && error && <p>Cargando...</p>}
     </>
-  )
-}
+  );
+};
 
-export default ProductContainer
+export default ProductContainer;
