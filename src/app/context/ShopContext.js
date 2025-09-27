@@ -1,7 +1,7 @@
 "use client";
 
 import axios from "axios";
-import { useState, useContext, createContext, useEffect } from "react";
+import { useState, useContext, createContext, useEffect, useCallback } from "react";
 
 const ShopContext = createContext();
 
@@ -12,11 +12,11 @@ export const AppContextProvider = ({ children }) => {
     console.log(cart);
   }, [cart]);
 
-  const addToCart = (name, img, id) => {
-    const dupli = cart.some(cartitem => cartitem.id == id);
+  const addToCart = (name, price, img, id) => {
+    const dupli = cart.find(cartitem => cartitem.id === id);
 
         if(!dupli) {
-            setCart([...cart, { name, id }]);
+            setCart([...cart, { name, price, img, id }]);
         }
   };
 
@@ -46,6 +46,8 @@ export const AppContextProvider = ({ children }) => {
     getData();
   };
 
+
+
   useEffect(() => {
     console.log(cart);
   }, [cart]);
@@ -58,6 +60,7 @@ export const AppContextProvider = ({ children }) => {
         addToCart,
         cartQty,
         getAllProducts,
+        //getOneProduct
       }}
     >
       {children}
