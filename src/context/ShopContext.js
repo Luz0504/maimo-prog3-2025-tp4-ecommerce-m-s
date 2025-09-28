@@ -58,6 +58,7 @@ export const AppContextProvider = ({children}) => {
             }
         }
         getProduct();
+        return product;
     }
 
     const getAllCategories = () => {
