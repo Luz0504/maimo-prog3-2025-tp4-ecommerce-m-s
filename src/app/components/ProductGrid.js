@@ -1,10 +1,9 @@
+"use client";
 
-'use client'
-
-import {useState, useEffect} from "react"
-import axios from 'axios';
-import ProductCard from './ProductCard'
-import { useAppContext } from "@/context/ShopContext";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import ProductCard from "./ProductCard";
+import { useAppContext } from "@/app/context/ShopContext";
 
 const ProductGrid = () => {
 
@@ -29,11 +28,10 @@ const ProductGrid = () => {
                 />
         ))}
 
-        {loading && 'Loading...'}
-        {error && "Hubo un error"}
-        
+      {loading && "Loading..."}
+      {error && "Hubo un error"}
     </div>
-  )
-}
+  );
+};
 
-export default ProductGrid
+export default ProductGrid;
