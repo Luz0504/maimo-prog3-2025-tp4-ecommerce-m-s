@@ -53,8 +53,10 @@ export const AppContextProvider = ({children}) => {
                 const response = await axios.get(`https://maimo-prog3-2025-api-blank.vercel.app/products/${id}`);
                 setProduct(response.data.product);
                 setLoading(false)
+                console.log("worked")
             } catch (error) {
-                setError(true)            
+                setError(true);
+                console.log("failed")            
             }
         }
         getProduct();
