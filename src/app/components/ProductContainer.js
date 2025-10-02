@@ -60,7 +60,7 @@ const ProductContainer = ({ id }) => {
               <tr className="bg-fuchsia-200">
                 <td className="text-2xl p-2">Category</td>
                 <td className="p-2">
-                  {product.categories.map((id) => {
+                  {product.categories.map((_id) => {
                     const match = categories.find(
                       (cat) => cat._id === id && cat.type === "1"
                     );
