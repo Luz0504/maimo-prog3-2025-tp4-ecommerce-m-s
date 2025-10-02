@@ -5,7 +5,7 @@ import BurgerMenu from "./components/BurgerMenu";
 
 export default function Home() {
   return (
-    <div className="min-h-lvh flex px-30 py-10 bg-purple-50">
+    <div className="min-h-lvh flex px-10 py-10 bg-purple-50">
       <BurgerMenu/>
       <GridContainer />
 

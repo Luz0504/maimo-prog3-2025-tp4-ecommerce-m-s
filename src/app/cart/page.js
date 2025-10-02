@@ -6,12 +6,14 @@ import CartContainer from '../components/CartContainer'
 
 const page = ({ id, name, price, img }) => {
   return (
-    <div>
-        <Link href={'/'}>Seguir comprando</Link>
+    <div className='p-10'>
+        <Link href={'/'} className='p-5 bg-fuchsia-500 border-2 border-white rounded-[200px] hover:bg-fuchsia-900'>Seguir comprando</Link>
 
+        <div className='py-10'>
         <CartContainer />
+        </div>
 
-        <Link href={'/'}>Continuar con la compra</Link>
+        <Link href={'/'} className='p-5 bg-fuchsia-500 border-2 border-white rounded-[200px] hover:bg-fuchsia-900'>Continuar con la compra</Link>
     </div>
   )
 }
