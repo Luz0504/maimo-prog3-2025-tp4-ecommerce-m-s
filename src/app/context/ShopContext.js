@@ -7,6 +7,11 @@ const ShopContext = createContext();
 
 export const AppContextProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
+  const [data, setData] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [product, setProduct] = useState([]);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     console.log(cart);
@@ -27,7 +32,7 @@ export const AppContextProvider = ({ children }) => {
 
   const cartQty = cart.length;
 
-  const getAllProducts = (setData, setError, setLoading) => {
+  const getAllProducts = () => {
     const getData = async () => {
       try {
         const response = await axios.get(
@@ -45,8 +50,6 @@ export const AppContextProvider = ({ children }) => {
     };
     getData();
   };
-
-
 
   useEffect(() => {
     console.log(cart);
