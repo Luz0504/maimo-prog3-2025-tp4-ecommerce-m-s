@@ -36,7 +36,7 @@ const ProductContainer = ({ id }) => {
                 <Link href={""} className="text-4xl">
                     {product.categories.map((_id) => {
                     const match = categories.find(
-                      (cat) => cat._id === id && cat.type === "0"
+                      (cat) => cat._id === _id && cat.type === "0"
                     );
                     return match ? match.name : null;
                   })}
