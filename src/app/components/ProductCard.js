@@ -11,13 +11,13 @@ const ProductCard = ({ id, name, price, img }) => {
   const isCart = cart.find((cartitem) => cartitem.id === id);
 
   return (
-    <div className="flex flex-col p-4 bg-white rounded-2xl gap-2 border-black border-[2px] text-black transition-transform duration-300 ease-in-out hover:scale-105">
-      <div className="flex justify-center">
+    <div className="col-span-3 flex flex-col justify-center p-4 bg-white rounded-2xl gap-2 border-black border-[2px] text-black transition-transform duration-300 ease-in-out hover:scale-105 w-50">
+      <div className=" min-h-30 flex items-center">
         <Image src={`/assets/${img}`} height={500} width={150} alt={name} />
       </div>
-      <div className="h-15">
-        <h1 className="line-clamp-1">{name}</h1>
-        <p>{price}</p>
+      <div>
+        <h1 className="max-w-40 max-h-70 text-[0.90em] line-clamp-2">{name}</h1>
+        <p className="text-2xl">{price}</p>
       </div>
       <Link
         href={`/product/${id}`}

@@ -24,7 +24,7 @@ const CategoryGrid = ({id}) => {
             {!loading &&
             <>
             <h1 className='text-3xl text-fuchsia-800 mb-5 text-center'>{thisCategory.name}</h1>
-            <div className='grid grid-cols-4 gap-3'>
+            <div className='grid grid-cols-9 gap-x-18 gap-y-5'>
                 {
                 data.map((product) => (
                      <ProductCard
