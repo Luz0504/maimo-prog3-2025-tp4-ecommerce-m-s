@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useAppContext } from "@/app/context/ShopContext";
+import { useAppContext } from "@/context/ShopContext";
 import AgregarCart from "./AgregarCart";
 import QuitarCart from "./QuitarCart";
 
 const ProductCard = ({ id, name, price, img }) => {
-  const { cart, addToCart, removeFromCart } = useAppContext();
+  const { cart } = useAppContext();
   const isCart = cart.find((cartitem) => cartitem.id === id);
 
   return (

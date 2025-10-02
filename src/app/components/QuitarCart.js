@@ -1,4 +1,4 @@
-import { useAppContext } from "@/app/context/ShopContext";
+import { useAppContext } from "@/context/ShopContext";
 
 const QuitarCart = ({ id }) => {
   const { removeFromCart } = useAppContext();

@@ -1,4 +1,4 @@
-import { useAppContext } from "@/app/context/ShopContext";
+import { useAppContext } from "@/context/ShopContext";
 
 const AgregarCart = ({ name, price, img, id }) => {
   const { addToCart } = useAppContext();

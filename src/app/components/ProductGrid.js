@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import ProductCard from "./ProductCard";
-import { useAppContext } from "@/app/context/ShopContext";
+import { useAppContext } from "@/context/ShopContext";
 
 const ProductGrid = () => {
 
