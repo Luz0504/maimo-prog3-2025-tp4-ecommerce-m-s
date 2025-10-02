@@ -13,20 +13,20 @@ export const AppContextProvider = ({children}) => {
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        console.log(cart)
-    },[cart]);
 
-    const addToCart = (name, img, categories) => {
-        cart.find(cartitem => cartitem.name === name && cartitem.category === category) ? 
-            alert("Ya se añadió ese") 
-            : 
-            setCart([...cart, {name, id, img, categories}]);
-    }
+  const addToCart = (name, price, img, id) => {
+    const dupli = cart.find(cartitem => cartitem.id === id);
 
-    const removeFromCart = (name,  img, categories, id) => {
-  setCart(cart.filter(cartitem => cartitem.name !== name || cartitem.category !== category));
-    };
+        if(!dupli) {
+            setCart([...cart, { name, price, img, id }]);
+        }
+  };
+
+  const removeFromCart = (id) => {
+     const updateCart = cart.filter(cartitem => cartitem.id !== id);
+            setCart(updateCart);
+  };
+
 
     const cartQty = cart.length;
 
@@ -97,7 +97,7 @@ export const AppContextProvider = ({children}) => {
     return(
         <ShopContext.Provider 
         value={
-            {favorites: cart,removeFromCart,addToCart,cartQty, getAllProducts, getOneProduct, getAllCategories, getCategoryProducts, loading, error, categories, product, data}}>
+            {cart,removeFromCart,addToCart,cartQty, getAllProducts, getOneProduct, getAllCategories, getCategoryProducts, loading, error, categories, product, data}}>
             {children}
         </ShopContext.Provider>
     )

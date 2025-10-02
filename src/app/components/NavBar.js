@@ -1,7 +1,13 @@
-import React from 'react'
+'use client'
+
+import Link from 'next/link'
 import Image from 'next/image'
+import { useAppContext } from '@/context/ShopContext'
 
 const NavBar = () => {
+
+  const { cartQty } = useAppContext();
+
   return (
     <nav className=' bg-fuchsia-900'>
         <h1 className='p-5 text-center text-4xl font-bold'>GAMERZ STORE</h1>
@@ -13,21 +19,18 @@ const NavBar = () => {
                 <li>ACCESIBILIDAD</li>
                 <li>DEVOLUCIONES</li>
             </ul>
-            <ul className='flex gap-3'>
-                <li><Image
-                src={'/assets/acc.png'}
-                alt={"Your acc"}
-                height={30}
-                width={30}
-                /></li>
-                <li><Image
-                src={'/assets/cart.png'}
-                alt={"Your cart"}
-                height={30}
-                width={30}
-                /></li>
+            <div className='flex flex-row'>
+              <ul className='flex gap-3'>
+                  <Link href={'/cart'}><li><Image
+                  src={'/assets/cart.png'}
+                  alt={"Your cart"}
+                  height={30}
+                  width={30}
+                  /></li></Link>
 
-            </ul>
+              </ul>
+              <span>({cartQty})</span>
+            </div>
         </div>
     </nav>
   )

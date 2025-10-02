@@ -2,7 +2,7 @@ import { Geist, Geist_Mono, Pixelify_Sans, Press_Start_2P } from "next/font/goog
 import "./globals.css";
 import NavBar from "./components/NavBar";
 import FGFooter from "./components/FGFooter";
-import { AppContextProvider } from "@/context/ShopContext";
+import { AppContextProvider } from "@/context/ShopContext.js";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
