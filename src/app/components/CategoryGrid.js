@@ -31,6 +31,7 @@ const CategoryGrid = ({id}) => {
                         name={product.name}
                         key={product._id}
                         id={product._id}
+                        img={product.img}
                     />
             ))
                 }
