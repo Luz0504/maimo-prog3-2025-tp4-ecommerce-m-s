@@ -8,9 +8,14 @@ import Link from "next/link";
 import Image from "next/image";
 
 const ProductContainer = ({ id }) => {
-
-
-  const { getOneProduct, getAllCategories, loading, error, product, categories} = useAppContext();
+  const {
+    getOneProduct,
+    getAllCategories,
+    loading,
+    error,
+    product,
+    categories,
+  } = useAppContext();
 
   useEffect(() => {
     getOneProduct(id);
@@ -34,15 +39,19 @@ const ProductContainer = ({ id }) => {
             <div className="flex flex-col ml-4 justify-around">
               <div>
                 <Link href={""} className="text-4xl">
-                    {product.categories.map((_id) => {
+                  {product.categories.map((_id) => {
                     const match = categories.find(
                       (cat) => cat._id === _id && cat.type === "0"
                     );
                     return match ? match.name : null;
                   })}
                 </Link>
-                <h1 className="text-black text-4xl mb-2 max-w-125">{product.name}</h1>
-                <h2 className="text-5xl text-fuchsia-900 mt-5">{product.price}</h2>
+                <h1 className="text-black text-4xl mb-2 max-w-125">
+                  {product.name}
+                </h1>
+                <h2 className="text-5xl text-fuchsia-900 mt-5">
+                  {product.price}
+                </h2>
               </div>
               <Link
                 href={""}
@@ -60,7 +69,7 @@ const ProductContainer = ({ id }) => {
               <tr className="bg-fuchsia-200">
                 <td className="text-2xl p-2">Category</td>
                 <td className="p-2">
-                  {product.categories.map((id) => {
+                  {product.categories.map((_id) => {
                     const match = categories.find(
                       (cat) => cat._id === id && cat.type === "1"
                     );
