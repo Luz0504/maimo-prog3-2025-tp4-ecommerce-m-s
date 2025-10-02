@@ -1,6 +1,5 @@
 "use client";
 
-import axios from "axios";
 import React from "react";
 
 import { useState, useCallback, useEffect } from "react";
@@ -24,31 +23,30 @@ const ProductContainer = ({ id }) => {
         <div className="text-black">
           <Link href="/">Volver</Link>
           <section className="flex justify-center mb-5">
-            <>
+            <div className="min-h-100 min-w-100 flex items-center rounded-2xl border-2 border-black justify-center bg-fuchsia-300">
               <Image
-                src={"/assets/sunny.jpg"}
+                src={`/assets/${product.img}`}
                 height={100}
                 width={350}
                 alt="Snnuy"
-                className="rounded-2xl border-2 border-black"
               />
-            </>
+            </div>
             <div className="flex flex-col ml-4 justify-around">
               <div>
-                <Link href={""} className="text-2xl">
-                                   {product.categories.map((id) => {
+                <Link href={""} className="text-4xl">
+                    {product.categories.map((id) => {
                     const match = categories.find(
                       (cat) => cat._id === id && cat.type === "0"
                     );
                     return match ? match.name : null;
                   })}
                 </Link>
-                <h1 className="text-black text-6xl mb-2">{product.name}</h1>
-                <p className="text-black text-4xl">{product.price}</p>
+                <h1 className="text-black text-4xl mb-2 max-w-125">{product.name}</h1>
+                <h2 className="text-5xl text-fuchsia-900 mt-5">{product.price}</h2>
               </div>
               <Link
                 href={""}
-                className="bg-fuchsia-900 text-white p-3 rounded-2xl w-fit text-2xl border-2 border-black"
+                className="bg-fuchsia-900 text-white p-3 rounded-2xl w-fit text-2xl border-2 border-black px-8 transition-transform duration-300 ease-in-out hover:scale-105"
               >
                 ¡Lo Quiero!
               </Link>
