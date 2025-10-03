@@ -17,11 +17,11 @@ const ProductCard = ({ id, name, price, img }) => {
       </div>
       <div>
         <h1 className="max-w-40 max-h-70 text-[0.90em] line-clamp-2">{name}</h1>
-        <p className="text-2xl">{price}</p>
+        <p className="text-4xl">{price}</p>
       </div>
       <Link
         href={`/product/${id}`}
-        className="bg-blue-400 rounded-3xl border-black border-[2px] p-1 duration-100 ease-in-out hover:bg-blue-500 hover:cursor-pointer text-center"
+        className="bg-blue-400 rounded-3xl border-black border-[2px] p-1 duration-100 ease-in-out hover:bg-blue-500 hover:cursor-pointer text-center text-2xl hover:text-white"
       >
         Ver más
       </Link>

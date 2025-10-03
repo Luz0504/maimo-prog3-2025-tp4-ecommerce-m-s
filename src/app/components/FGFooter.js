@@ -5,7 +5,7 @@ const FGFooter = () => {
   return (
     <footer className='bg-fuchsia-900 py-10 px-10 text-center'>
       <section className='flex justify-between items-center'>
-        <button className='bg-fuchsia-950 text-white p-2 px-4 rounded-2xl font-bold'>Boton de Arrepentimiento</button>
+        <button className='bg-fuchsia-950 text-white p-2 px-4 rounded-2xl font-bold text-2xl'>Boton de Arrepentimiento</button>
         <div className='flex gap-2 items-center'>
           <a alt="tiktok"><Image
           src={'assets/tiktok.svg'}

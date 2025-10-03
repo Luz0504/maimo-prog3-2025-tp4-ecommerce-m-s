@@ -21,7 +21,13 @@ const ProductContainer = ({ id }) => {
     <>
       {!loading && (
         <div className="text-black">
-          <Link href="/">Volver</Link>
+          <Link href="/">
+            <Image
+            src={"/assets/window-close.png"}
+            alt="Volver"
+            height={50}
+            width={50}/>
+          </Link>
           <section className="flex justify-center mb-5">
             <div className="min-h-100 min-w-100 flex items-center rounded-2xl border-2 border-black justify-center bg-fuchsia-300">
               <Image
@@ -34,15 +40,15 @@ const ProductContainer = ({ id }) => {
             <div className="flex flex-col ml-4 justify-around">
               <div>
                 <Link href={""} className="text-4xl">
-                    {product.categories.map((_id) => {
+                    {product.categories.map((id) => {
                     const match = categories.find(
                       (cat) => cat._id === id && cat.type === "0"
                     );
                     return match ? match.name : null;
                   })}
                 </Link>
-                <h1 className="text-black text-4xl mb-2 max-w-125">{product.name}</h1>
-                <h2 className="text-5xl text-fuchsia-900 mt-5">{product.price}</h2>
+                <h1 className="text-black text-3xl mb-2 max-w-125">{product.name}</h1>
+                <h2 className="text-4xl text-fuchsia-900 mt-5">{product.price}</h2>
               </div>
               <Link
                 href={""}
@@ -52,14 +58,14 @@ const ProductContainer = ({ id }) => {
               </Link>
             </div>
           </section>
-          <p className="italic text-gray-900 mb-2">
+          <p className="italic text-gray-900 mx-10 my-10 text-2xl p-5 rounded-3xl border-4 border-dotted border-fuchsia-900">
             &#8223; {product.desc} &#8221;
           </p>
-          <table className="w-full">
+          <table className="w-full text-3xl">
             <tbody>
               <tr className="bg-fuchsia-200">
-                <td className="text-2xl p-2">Category</td>
-                <td className="p-2">
+                <td className=" p-2 border-r-4 border-fuchsia-900">Category</td>
+                <td className="p-2 px-5">
                   {product.categories.map((id) => {
                     const match = categories.find(
                       (cat) => cat._id === id && cat.type === "1"
@@ -69,8 +75,20 @@ const ProductContainer = ({ id }) => {
                 </td>
               </tr>
               <tr>
-                <td className="text-2xl p-2">Tamaño</td>
-                <td className="p-2">{product.size}</td>
+                <td className=" p-2 border-r-4 border-fuchsia-900">Tamaño</td>
+                {
+                  typeof product.size === "object" ?
+                  <td className="px-5">
+                    <ul className="flex gap-2.5">
+                    {product.size.map(s =>
+                      <div key={s} className="px-2 rounded-[0.25em] border-2 hover:bg-fuchsia-900 hover:text-white hover:border-white cursor-pointer">{s}</div>
+                    )}
+                    </ul>
+                  </td>
+                  :
+                  <td className="p-2">{product.size}</td>
+                }
+                
               </tr>
             </tbody>
           </table>

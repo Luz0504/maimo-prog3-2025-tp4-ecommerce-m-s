@@ -29,7 +29,7 @@ const NavBar = () => {
                   /></li></Link>
 
               </ul>
-              <span>({cartQty})</span>
+              <span className='text-2xl'>({cartQty})</span>
             </div>
         </div>
     </nav>
