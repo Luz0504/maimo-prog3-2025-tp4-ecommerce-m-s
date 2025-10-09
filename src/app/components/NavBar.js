@@ -31,11 +31,11 @@ const NavBar = () => {
                   alt={"Your cart"}
                   height={30}
                   width={30}
-                />
-              </li>
-            </Link>
-          </ul>
-          <span>({cartQty})</span>
+                  /></li></Link>
+
+              </ul>
+              <span className='text-2xl'>({cartQty})</span>
+            </div>
         </div>
       </div>
     </nav>

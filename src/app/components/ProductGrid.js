@@ -14,7 +14,7 @@ const ProductGrid = () => {
     }, [])
 
   return (
-    <div className='grid grid-cols-4 gap-3'>
+    <div className='grid grid-cols-9 gap-x-18 gap-y-5'>
         
         {!loading &&
                 
