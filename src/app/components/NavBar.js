@@ -37,8 +37,7 @@ const NavBar = () => {
               <span className='text-2xl'>({cartQty})</span>
             </div>
         </div>
-      </div>
-    </nav>
+            </nav>
   );
 };
 
