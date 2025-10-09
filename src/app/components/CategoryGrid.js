@@ -7,10 +7,9 @@ import ProductCard from './ProductCard';
 
 const CategoryGrid = ({id}) => {
 
-    const {getCategoryProducts, categories, data, error, loading} = useAppContext();
+    const {categories, data, error, loading} = useAppContext();
 
         const thisCategory = categories.find(cat => cat._id === id);
-        console.log(thisCategory)
 
   return (
     <section className='flex-col'>
