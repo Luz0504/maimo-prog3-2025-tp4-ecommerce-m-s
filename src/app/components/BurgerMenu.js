@@ -1,21 +1,18 @@
-'use client'
+"use client";
 
-import { useAppContext } from '@/context/ShopContext'
-import React from 'react'
-import { useState,useEffect } from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
+import { useAppContext } from "@/context/ShopContext";
+import React from "react";
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 const BurgerMenu = () => {
+  const { getAllCategories, getCategoryProducts, loading, error, categories } = useAppContext();
 
-  const {getAllCategories, getCategoryProducts, loading, error, categories} = useAppContext();
+  useEffect(() => {
+    getAllCategories();
+  }, []);
 
-
-   useEffect(() => {
-        getAllCategories();
-    }, [])
-    
-  
   return (
     <>
        {!loading &&
@@ -33,11 +30,11 @@ const BurgerMenu = () => {
         )
         }
         </nav>
-       }
+      )}
 
-       {loading && error && <p>Lol. LMAO</p>}
+      {loading && error && <p>Lol. LMAO</p>}
     </>
-  )
-}
+  );
+};
 
-export default BurgerMenu
+export default BurgerMenu;

@@ -1,5 +1,5 @@
-import React from 'react'
-import Image from 'next/image'
+import React from "react";
+import Image from "next/image";
 
 const FGFooter = () => {
   return (
@@ -27,15 +27,15 @@ const FGFooter = () => {
           /></a>
         </div>
       </section>
-      <section className='flex gap-2 justify-center mt-3'>
+      <section className="flex gap-2 justify-center mt-3">
         <p>Copyright 2025 - Sueldo & Mobilia - </p>
-        <a className='font-bold underline cursor-pointer'>Sobre Nosostros</a>
-        <a className='font-bold underline cursor-pointer'>Ayuda</a>
-        <a className='font-bold underline cursor-pointer'>Privacidad</a>
-        <a className='font-bold underline cursor-pointer'>Accesibilidad</a>
+        <a className="font-bold underline cursor-pointer">Sobre Nosostros</a>
+        <a className="font-bold underline cursor-pointer">Ayuda</a>
+        <a className="font-bold underline cursor-pointer">Privacidad</a>
+        <a className="font-bold underline cursor-pointer">Accesibilidad</a>
       </section>
     </footer>
-  )
-}
+  );
+};
 
-export default FGFooter
+export default FGFooter;
