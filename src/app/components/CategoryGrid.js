@@ -12,7 +12,6 @@ const CategoryGrid = ({id}) => {
     
         useEffect(() => {
             getCategoryProducts(id);
-            getAllCategories();
         }, [])
 
         const thisCategory = categories.find(cat => cat._id === id);
