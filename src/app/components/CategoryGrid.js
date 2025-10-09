@@ -10,6 +10,7 @@ const CategoryGrid = ({id}) => {
     const {categories, data, error, loading} = useAppContext();
 
         const thisCategory = categories.find(cat => cat._id === id);
+        console.log(thisCategory)
 
   return (
     <section className='flex-col'>

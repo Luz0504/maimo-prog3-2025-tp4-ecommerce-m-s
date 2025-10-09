@@ -7,10 +7,12 @@ import { useAppContext } from "@/context/ShopContext";
 import Link from "next/link";
 import Image from "next/image";
 
-const ProductContainer = () => {
+const ProductContainer = ({id}) => {
 
 
-  const { loading, error, product, categories} = useAppContext();
+  const { loading, error, product, categories, getOneProduct} = useAppContext();
+
+  useEffect(() => {getOneProduct(id)},[]);
 
 
   return (
