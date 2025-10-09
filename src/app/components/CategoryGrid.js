@@ -7,12 +7,7 @@ import ProductCard from './ProductCard';
 
 const CategoryGrid = ({id}) => {
 
-    const {getCategoryProducts, getAllCategories, categories, data, error, loading} = useAppContext();
-    
-    
-        useEffect(() => {
-            getCategoryProducts(id);
-        }, [])
+    const {getCategoryProducts, categories, data, error, loading} = useAppContext();
 
         const thisCategory = categories.find(cat => cat._id === id);
         console.log(thisCategory)

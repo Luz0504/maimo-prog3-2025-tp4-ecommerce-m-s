@@ -7,7 +7,7 @@ import AgregarCart from "./AgregarCart";
 import QuitarCart from "./QuitarCart";
 
 const ProductCard = ({ id, name, price, img }) => {
-  const { cart } = useAppContext();
+  const { cart, getOneProduct } = useAppContext();
   const isCart = cart.find((cartitem) => cartitem.id === id);
 
   return (
@@ -22,6 +22,7 @@ const ProductCard = ({ id, name, price, img }) => {
       <Link
         href={`/product/${id}`}
         className="bg-blue-400 rounded-3xl border-black border-[2px] p-1 duration-100 ease-in-out hover:bg-blue-500 hover:cursor-pointer text-center text-2xl hover:text-white"
+        onClick={() => getOneProduct(id)}
       >
         Ver más
       </Link>
