@@ -6,13 +6,17 @@ import { useState, useCallback, useEffect } from "react";
 import { useAppContext } from "@/context/ShopContext";
 import Link from "next/link";
 import Image from "next/image";
+import AgregarCart from "./AgregarCart";
+import QuitarCart from "./QuitarCart";
 
 const ProductContainer = ({id}) => {
 
 
-  const { loading, error, product, categories, getOneProduct} = useAppContext();
+  const { loading, error, product, categories, getOneProduct, cart} = useAppContext();
 
   useEffect(() => {getOneProduct(id)},[]);
+
+    const isCart = cart.find((cartitem) => cartitem.id === id);
 
 
   return (
@@ -48,12 +52,11 @@ const ProductContainer = ({id}) => {
                 <h1 className="text-black text-3xl mb-2 max-w-125">{product.name}</h1>
                 <h2 className="text-4xl text-fuchsia-900 mt-5">{product.price}</h2>
               </div>
-              <Link
-                href={""}
-                className="bg-fuchsia-900 text-white p-3 rounded-2xl w-fit text-2xl border-2 border-black px-8 transition-transform duration-300 ease-in-out hover:scale-105"
-              >
-                ¡Lo Quiero!
-              </Link>
+              {isCart ? (
+                <QuitarCart id={id} />
+              ) : (
+                <AgregarCart key={product.id} name={product.name} price={product.price} img={product.img} id={id} />
+              )}
             </div>
           </section>
           <p className="italic text-gray-900 mx-10 my-10 text-2xl p-5 rounded-3xl border-4 border-dotted border-fuchsia-900">
