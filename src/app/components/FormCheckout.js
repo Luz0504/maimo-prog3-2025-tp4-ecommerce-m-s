@@ -15,7 +15,7 @@ function validateEmail(value) {
 function validateUsername(value) {
   let error;
   if (value === "admin") {
-    error = "Nice try!";
+    error = "Retry";
   }
   return error;
 }
@@ -46,8 +46,8 @@ export const CheckoutForm = () => (
               name="email"
               type="email"
               validate={validateEmail}
-              placeholder="you@example.com"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+              placeholder="tu@ejemplo.com"
+              className="w-full px-3 py-2 border border-gray-300 rounded-3xl focus:ring-2 focus:ring-blue-400 focus:outline-none"
             />
             {errors.email && touched.email && (
               <div className="text-fuchsia-500 text-sm mt-1">
@@ -61,13 +61,13 @@ export const CheckoutForm = () => (
               htmlFor="username"
               className="block text-sm font-medium text-white mb-1"
             >
-              Username
+              Usuario
             </label>
             <Field
               name="username"
               validate={validateUsername}
-              placeholder="Enter your username"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+              placeholder="Nombre de usuario"
+              className="w-full px-3 py-2 border border-gray-300 rounded-3xl focus:ring-2 focus:ring-blue-400 focus:outline-none"
             />
             {errors.username && touched.username && (
               <div className="text-fuchsia-500 text-sm mt-1">
@@ -78,9 +78,9 @@ export const CheckoutForm = () => (
 
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 hover:cursor-pointer"
+            className="w-full bg-blue-500 text-white py-2 rounded-3xl hover:bg-blue-700 transition-colors duration-200 hover:cursor-pointer"
           >
-            Submit
+            Validar
           </button>
         </Form>
       )}
