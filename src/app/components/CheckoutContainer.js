@@ -11,21 +11,26 @@ const CheckoutContainer = () => {
   };
 
   return (
-    <section className="flex flex-row h-70">
+    <section className="flex flex-row h-full my-10">
       <div>
-        <div>
-          <CheckoutForm />
-        </div>
+        <CheckoutForm />
+      </div>
+      <div className= "text-white flex flex-col">
         <div>
           <h2>Pedido</h2>
           {cart.map((product) => (
-            <div key={product._id}>
+            <div key={product.id}>
               <h3>{product.name}</h3>
               <p>Cantidad: {product.qty}</p>
             </div>
           ))}
         </div>
-        <button onClick={() => handlePlaceOrder()}>Place Order</button>
+        <button
+          className="w-40 h-10 bg-blue-500 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 hover:cursor-pointer"
+          onClick={() => handlePlaceOrder()}
+        >
+          Place Order
+        </button>
       </div>
     </section>
   );

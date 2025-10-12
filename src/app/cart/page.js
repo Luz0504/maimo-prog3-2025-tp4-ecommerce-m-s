@@ -13,7 +13,7 @@ const page = ({ id, name, price, img }) => {
         <CartContainer />
         </div>
 
-        <Link href={'/'} className='p-5 bg-fuchsia-500 border-2 border-white rounded-[200px] hover:bg-fuchsia-900'>Continuar con la compra</Link>
+        <Link href={'/checkout'} className='p-5 bg-fuchsia-500 border-2 border-white rounded-[200px] hover:bg-fuchsia-900'>Continuar con la compra</Link>
     </div>
   )
 }
