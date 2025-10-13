@@ -13,7 +13,7 @@ const ShopContext = createContext();
 
 export const AppContextProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
-  const [product, setProduct] = useState([]);
+  const [product, setProduct] = useState({});
   const [data, setData] = useState([]);
   const [categories, setCategories] = useState([]);
   const [error, setError] = useState(false);
