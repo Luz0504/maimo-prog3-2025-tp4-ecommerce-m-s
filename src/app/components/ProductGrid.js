@@ -20,11 +20,8 @@ const ProductGrid = () => {
                 
             data.map((product) => (
                  <ProductCard
-                    name={product.name}
-                    price={product.price}
-                    img={product.img}
-                    key={product._id}
-                    id={product._id}
+                 key={product._id}
+                  product={product}
                 />
         ))}
 

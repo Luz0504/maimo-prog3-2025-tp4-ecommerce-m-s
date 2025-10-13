@@ -15,11 +15,19 @@ export const AppContextProvider = ({children}) => {
 
 
   const addToCart = (name, price, img, id) => {
+
+    let productToAdd = {name, price, img, id, qty:1}
+
     const dupli = cart.find(cartitem => cartitem.id === id);
 
-        if(!dupli) {
-            setCart([...cart, { name, price, img, id }]);
+        if(dupli) {
+            dupli.qty += 1;
+            productToAdd = dupli;
         }
+
+        const filteredCart = cart.filter(cartitem => cartitem.id !== id)
+
+        setCart([...filteredCart, productToAdd]);
         /**
          * 
          *
