@@ -7,8 +7,9 @@ import AgregarCart from "./AgregarCart";
 import QuitarCart from "./QuitarCart";
 
 const ProductCard = ({product}) => {
-  const { cart, getOneProduct } = useAppContext();
-  const isCart = cart.find((cartitem) => cartitem.id === product._id);
+  const { cart, getOneProduct, addToCart } = useAppContext();
+  const isCart = cart.find((cartitem) => cartitem.id === product._id)
+  const qty = isCart?.qty ?? 0;
 
   return (
     <div className="col-span-3 flex flex-col justify-center p-4 bg-white rounded-2xl gap-2 border-black border-[2px] text-black transition-transform duration-300 ease-in-out hover:scale-105 w-50">
@@ -28,7 +29,9 @@ const ProductCard = ({product}) => {
       </Link>
 
         <AgregarCart key={product._id} name={product.name} price={product.price} img={product.img} id={product._id} />
-
+        <p>{qty}</p>
+        <button onClick={() => addToCart(product.name, product.price, product.img, product._id, -1)}>Remove qty</button>
+        <QuitarCart id={product._id}/>
     </div>
   );
 };

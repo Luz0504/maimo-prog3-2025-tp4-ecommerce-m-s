@@ -7,7 +7,7 @@ import { useAppContext } from "@/context/ShopContext";
 
 const ProductGrid = () => {
 
-    const {getAllProducts, data, error, loading} = useAppContext();
+    const {getAllProducts, data, error, loading, cart} = useAppContext();
 
     useEffect(() => {
         getAllProducts();
@@ -22,6 +22,8 @@ const ProductGrid = () => {
                  <ProductCard
                  key={product._id}
                   product={product}
+
+
                 />
         ))}
 
