@@ -14,8 +14,8 @@ function validateEmail(value) {
 
 function validateUsername(value) {
   let error;
-  if (value === "admin") {
-    error = "Retry";
+  if (!value) {
+    error = "Required";
   }
   return error;
 }
