@@ -14,18 +14,18 @@ export const AppContextProvider = ({children}) => {
     const [loading, setLoading] = useState(true);
 
 
-  const addToCart = (name, price, img, id, qty) => {
+  const addToCart = (name, price, img, _id, qty) => {
 
-    let productToAdd = {name, price, img, id, qty}
+    let productToAdd = {name, price, img, _id, qty}
 
-    const dupli = cart.find(cartitem => cartitem.id === id);
+    const dupli = cart.find(cartitem => cartitem._id === _id);
 
         if(dupli) {
             dupli.qty += qty;
             productToAdd = dupli;
         }
 
-    const filteredCart = cart.filter(cartitem => cartitem.id !== id)
+    const filteredCart = cart.filter(cartitem => cartitem._id !== _id)
 
         setCart([...filteredCart, productToAdd]);
         /**
@@ -49,8 +49,8 @@ export const AppContextProvider = ({children}) => {
         //setCart([...cart, product])
   };
 
-  const removeFromCart = (id) => {
-     const updateCart = cart.filter(cartitem => cartitem.id !== id);
+  const removeFromCart = (_id) => {
+     const updateCart = cart.filter(cartitem => cartitem._id !== _id);
             setCart(updateCart);
   };
 

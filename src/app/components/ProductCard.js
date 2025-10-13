@@ -8,7 +8,7 @@ import QuitarCart from "./QuitarCart";
 
 const ProductCard = ({product}) => {
   const { cart, getOneProduct, addToCart } = useAppContext();
-  const isCart = cart.find((cartitem) => cartitem.id === product._id)
+  const isCart = cart.find((cartitem) => cartitem._id === product._id)
   const qty = isCart?.qty ?? 0;
 
   return (
@@ -28,10 +28,14 @@ const ProductCard = ({product}) => {
         Ver más
       </Link>
 
-        <AgregarCart key={product._id} name={product.name} price={product.price} img={product.img} id={product._id} />
+        <AgregarCart key={product._id} name={product.name} price={product.price} img={product.img} _id={product._id} />
         <p>{qty}</p>
-        <button onClick={() => addToCart(product.name, product.price, product.img, product._id, -1)}>Remove qty</button>
-        <QuitarCart id={product._id}/>
+        {
+          qty > 1?
+                  <button onClick={() => addToCart(product.name, product.price, product.img, product._id, -1)}>Remove qty</button>
+          :
+          <QuitarCart id={product._id}/>
+        }        
     </div>
   );
 };
