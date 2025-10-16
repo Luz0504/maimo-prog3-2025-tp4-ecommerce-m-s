@@ -20,7 +20,7 @@ function validateUsername(value) {
   return error;
 }
 
-export const CheckoutForm = () => (
+export const CheckoutForm = ({handleAddOrder}) => (
   <div className="px-10">
     <h1 className="text-2xl font-semibold text-fuchsia-700 mb-2">Signup</h1>
 
@@ -30,7 +30,7 @@ export const CheckoutForm = () => (
         email: "",
       }}
       onSubmit={(values) => {
-        console.log(values);
+        handleAddOrder(values)
       }}
     >
       {({ errors, touched }) => (

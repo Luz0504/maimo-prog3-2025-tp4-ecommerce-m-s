@@ -16,7 +16,7 @@ const page = () => {
         Seguir comprando
       </Link>
 
-      <div className="py-10 flex flex-col items-center justify-items-center">
+      <div className="flex items-center justify-items-center">
         <CartContainer />
       </div>
       <div className="flex flex-row-reverse">
