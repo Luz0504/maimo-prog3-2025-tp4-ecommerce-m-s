@@ -3,9 +3,16 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useAppContext } from "@/context/ShopContext";
+import { useState, useEffect } from "react";
 
 const NavBar = () => {
   const { cartQty } = useAppContext();
+
+  const { getAllCategories, getCategoryProducts, loading, error, categories } = useAppContext();
+  
+    useEffect(() => {
+      getAllCategories();
+    }, []);
 
   return (
     <nav className=" bg-fuchsia-900">
@@ -15,12 +22,12 @@ const NavBar = () => {
         </h1>
       </Link>
       <div className="flex justify-between items-center px-10 bg-blue-500 py-2 rounded-t-4xl">
-        <ul className="flex gap-3 text-[0.75em]">
-          <li>CATEGORIAS</li>
-          <li>GIFTCARDS</li>
-          <li>AYUDA</li>
-          <li>ACCESIBILIDAD</li>
-          <li>DEVOLUCIONES</li>
+        <ul className="flex gap-6 text-[0.60em]">
+           {
+        categories.filter(cat => cat.type === "0").map(cat =>
+             <Link href={`/category/${cat._id}`} key={cat._id} onClick={() => getCategoryProducts(cat._id)} className='text-2xl hover:text-fuchsia-900'> {cat.name}</Link>
+        )
+        }
         </ul>
         <div className="flex flex-row">
           <ul className="flex gap-3">
