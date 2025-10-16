@@ -133,11 +133,30 @@ export const AppContextProvider = ({ children }) => {
   }, [cart]);
 
   const addOrder = async (userValues) => {
+
+    const reducedCart = cart.map(product => {
+      const prod = {
+        name: product.name,
+        _id: product._id,
+        qty: product.qty
+      }
+
+      return prod
+
+    })
+
     const orderValues = {
       user: userValues,
-      products: cart,
+      products: reducedCart,
     };
     console.log("my order is", orderValues);
+
+    try {
+      const response = axios.post("https://maimo-prog3-2025-api-blank.vercel.app/orders/", orderValues)
+      console.log(response.data)
+    } catch (error){
+      console.log(error)
+    }
   };
 
   return (
