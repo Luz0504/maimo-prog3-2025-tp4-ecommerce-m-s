@@ -28,11 +28,9 @@ const ProductCard = ({product}) => {
         Ver más
       </Link>
 
-        <AgregarCart key={product._id} name={product.name} price={product.price} img={product.img} _id={product._id} />
-        <p>{qty}</p>
         {
-          qty > 1?
-                  <button onClick={() => addToCart(product.name, product.price, product.img, product._id, -1)}>Remove qty</button>
+          qty == 0?
+          <AgregarCart key={product._id} name={product.name} price={product.price} img={product.img} _id={product._id} />
           :
           <QuitarCart id={product._id}/>
         }        
