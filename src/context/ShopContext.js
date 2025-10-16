@@ -1,34 +1,38 @@
-'use client'
+"use client";
 
-import axios from 'axios';
-import {useState, useContext, createContext, useEffect, useCallback} from 'react';
+import axios from "axios";
+import {
+  useState,
+  useContext,
+  createContext,
+  useEffect,
+  useCallback,
+} from "react";
 
 const ShopContext = createContext();
 
-export const AppContextProvider = ({children}) => {
-    const [cart, setCart] = useState([]);
-    const [product, setProduct] = useState({});
-    const [data, setData] = useState([]);
-    const [categories, setCategories] = useState([]);
-    const [error, setError] = useState(false);
-    const [loading, setLoading] = useState(true);
-
+export const AppContextProvider = ({ children }) => {
+  const [cart, setCart] = useState([]);
+  const [product, setProduct] = useState({});
+  const [data, setData] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const addToCart = (name, price, img, _id, qty) => {
+    let productToAdd = { name, price, img, _id, qty };
 
-    let productToAdd = {name, price, img, _id, qty}
+    const dupli = cart.find((cartitem) => cartitem._id === _id);
 
-    const dupli = cart.find(cartitem => cartitem._id === _id);
+    if (dupli) {
+      dupli.qty += qty;
+      productToAdd = dupli;
+    }
 
-        if(dupli) {
-            dupli.qty += qty;
-            productToAdd = dupli;
-        }
+    const filteredCart = cart.filter((cartitem) => cartitem._id !== _id);
 
-    const filteredCart = cart.filter(cartitem => cartitem._id !== _id)
-
-        setCart([...filteredCart, productToAdd]);
-        /**
+    setCart([...filteredCart, productToAdd]);
+    /**
          * 
          *
          let productToAdd = {}:
@@ -46,97 +50,127 @@ export const AppContextProvider = ({children}) => {
         const filteredCart = cart.filter()
          */
 
-        //setCart([...cart, product])
+    //setCart([...cart, product])
   };
 
   const removeFromCart = (_id) => {
-     const updateCart = cart.filter(cartitem => cartitem._id !== _id);
-            setCart(updateCart);
+    const updateCart = cart.filter((cartitem) => cartitem._id !== _id);
+    setCart(updateCart);
   };
 
+  const cartQty = cart.length;
 
-    const cartQty = cart.length;
+  const getAllProducts = () => {
+    const getData = async () => {
+      try {
+        const response = await axios.get(
+          "https://maimo-prog3-2025-api-blank.vercel.app/products"
+        );
+        const responseData = response.data.products;
+        setData(responseData);
+        setLoading(false);
+      } catch (error) {
+        setError(true);
+        setLoading(false);
+      }
+    };
+    getData();
+  };
 
-    const getAllProducts = () => {
+  const getOneProduct = (id) => {
+    const getProduct = async () => {
+      try {
+        const response = await axios.get(
+          `https://maimo-prog3-2025-api-blank.vercel.app/products/${id}`
+        );
+        setProduct(response.data.product);
+        setLoading(false);
+        console.log("worked");
+      } catch (error) {
+        setError(true);
+        console.log("failed");
+      }
+    };
+    getProduct();
+    return product;
+  };
 
-        const getData = async () => {
-            try {
-                const response = await axios.get('https://maimo-prog3-2025-api-blank.vercel.app/products')
-                const responseData  = response.data.products;
-                setData(responseData);
-                setLoading(false)
-            } catch (error) {
-                setError(true)
-                setLoading(false)
-            }
-        }
-        getData();
-    }
+  const getAllCategories = () => {
+    const getCategories = async () => {
+      try {
+        const response = await axios.get(
+          "https://maimo-prog3-2025-api-blank.vercel.app/categories"
+        );
+        setCategories(response.data.categories);
+        setLoading(false);
+      } catch (error) {
+        setError(true);
+      }
+    };
+    getCategories();
+  };
 
-    const getOneProduct = (id) => {
+  const getCategoryProducts = (id) => {
+    const getSlug = async () => {
+      try {
+        const response = await axios.get(
+          `https://maimo-prog3-2025-api-blank.vercel.app/categories/${id}/products`
+        );
+        const responseData = response.data.products;
+        setData(responseData);
+        console.log("Worked");
+        setLoading(false);
+      } catch (error) {
+        setError(true);
+        console.log("Did not");
+      }
+    };
+    getSlug();
+  };
 
-        const getProduct = async () => {
-            try {
-                const response = await axios.get(`https://maimo-prog3-2025-api-blank.vercel.app/products/${id}`);
-                setProduct(response.data.product);
-                setLoading(false)
-                console.log("worked")
-            } catch (error) {
-                setError(true);
-                console.log("failed")            
-            }
-        }
-        getProduct();
-        return product;
-    }
+  useEffect(() => {
+    console.log(cart);
+  }, [cart]);
 
-    const getAllCategories = () => {
-        const getCategories = async() => {
-                  try {
-                const response = await axios.get('https://maimo-prog3-2025-api-blank.vercel.app/categories');
-                setCategories(response.data.categories);
-                setLoading(false)
-            } catch (error) {
-                setError(true);
-            }
-            }
-                getCategories();
-            }
+  const addOrder = async (userValues) => {
+    const orderValues = {
+      user: userValues,
+      products: cart,
+    };
+    console.log("my order is", orderValues);
+  };
 
-            const getCategoryProducts = (id) => {
-                const getSlug = async() => {
-                        try {
-                        const response = await axios.get(`https://maimo-prog3-2025-api-blank.vercel.app/categories/${id}/products`)
-                        const responseData  = response.data.products;
-                        setData(responseData);
-                        console.log("Worked")
-                        setLoading(false)
-                    } catch (error) {
-                        setError(true);
-                        console.log("Did not")
-                    }
-                    }
-                getSlug();
-            }            
-
-        useEffect(() => {console.log(cart)}, [cart]);
-
-    return(
-        <ShopContext.Provider 
-        value={
-            {cart,removeFromCart,addToCart,cartQty, getAllProducts, getOneProduct, getAllCategories, getCategoryProducts, loading, error, categories, product, data}}>
-            {children}
-        </ShopContext.Provider>
-    )
-}
+  return (
+    <ShopContext.Provider
+      value={{
+        cart,
+        removeFromCart,
+        addToCart,
+        cartQty,
+        getAllProducts,
+        getOneProduct,
+        getAllCategories,
+        getCategoryProducts,
+        loading,
+        error,
+        categories,
+        product,
+        data,
+        addOrder,
+      }}
+    >
+      {children}
+    </ShopContext.Provider>
+  );
+};
 
 export const useAppContext = () => {
-    const context = useContext(ShopContext);
-    if(!context){
-        throw new Error('use AppContext must be used within a AppContextProvider');
-    }
-    return context;
-}
+  const context = useContext(ShopContext);
+  if (!context) {
+    throw new Error("use AppContext must be used within a AppContextProvider");
+  }
+  return context;
+};
 
 export default ShopContext;
 
@@ -152,4 +186,3 @@ export default ShopContext;
 //Checkout, trae del context el CART y un boton que diga comprar
 //CREA EL PEDIDO EN BASE DE DATOS
 //SEND GRID, TE MANDA UN MAIL GRATIS CON EL PEDIDO
-

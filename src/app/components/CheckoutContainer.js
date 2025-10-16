@@ -4,18 +4,22 @@ import { useAppContext } from "@/context/ShopContext";
 import { CheckoutForm } from "./FormCheckout";
 
 const CheckoutContainer = () => {
-  const { cart } = useAppContext();
+  const { cart, addOrder } = useAppContext();
 
   const handlePlaceOrder = () => {
     console.log("my order");
   };
 
+  const handleAddOrder = (values) => {
+    addOrder(values)
+  };
+
   return (
     <section className="flex flex-row h-full my-10 mx-5">
       <div className="w-500">
-        <CheckoutForm />
+        <CheckoutForm handleAddOrder={handleAddOrder} />
       </div>
-      <div className= "border-2 border-white rounded-3xl p-5 flex flex-col w-500">
+      <div className="border-2 border-white rounded-3xl p-5 flex flex-col w-500">
         <div className="mb-10">
           <h2>Pedido</h2>
           {cart.map((product) => (
@@ -32,7 +36,6 @@ const CheckoutContainer = () => {
           Completar la compra
         </button>
       </div>
-
     </section>
   );
 };
