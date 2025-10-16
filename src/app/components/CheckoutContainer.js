@@ -19,7 +19,7 @@ const CheckoutContainer = () => {
         <div className="mb-10">
           <h2>Pedido</h2>
           {cart.map((product) => (
-            <div className="flex flex-row gap-4" key={product.id}>
+            <div className="flex flex-row gap-4" key={product._id}>
               <h3>{product.name}</h3>
               <p>{product.qty}</p>
             </div>
