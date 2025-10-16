@@ -1,20 +1,22 @@
 import { useAppContext } from "@/context/ShopContext";
 import ProductCard from "./ProductCard";
 
-const CartContainer = () => {
-  const { cart } = useAppContext();
+const CartContainer = ({cart}) => {
+  const { loading, error } = useAppContext();
 
+  console.log(cart);
   return (
-    <div className="mx-20 grid grid-cols-14 gap-x-5 gap-y-8 p-3 text-1xl h-full">
-      {cart.map((cartitem) => (
+    <div className="mx-20 grid grid-cols-6 gap-5 p-3 text-1xl h-100">
+      {!loading &&
+      cart.map((cartitem) => (
         <ProductCard
-          id={cartitem.id}
-          name={cartitem.name}
-          img={cartitem.img}
-          alt={cartitem.name}
-          key={cartitem.id}
+          product={cartitem}
+          key={cartitem._id}
         />
-      ))}
+      ))
+    }
+
+    {loading && error && "Hubo un error at cargar el cart"}
     </div>
   );
 };

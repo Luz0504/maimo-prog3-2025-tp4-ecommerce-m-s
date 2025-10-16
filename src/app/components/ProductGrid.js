@@ -7,7 +7,7 @@ import { useAppContext } from "@/context/ShopContext";
 
 const ProductGrid = () => {
 
-    const {getAllProducts, data, error, loading} = useAppContext();
+    const {getAllProducts, data, error, loading, cart} = useAppContext();
 
     useEffect(() => {
         getAllProducts();
@@ -20,11 +20,10 @@ const ProductGrid = () => {
                 
             data.map((product) => (
                  <ProductCard
-                    name={product.name}
-                    price={product.price}
-                    img={product.img}
-                    key={product._id}
-                    id={product._id}
+                 key={product._id}
+                  product={product}
+
+
                 />
         ))}
 
