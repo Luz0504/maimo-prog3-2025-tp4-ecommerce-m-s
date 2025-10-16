@@ -27,10 +27,8 @@ const CategoryGrid = ({ id }) => {
                 {
                 data.map((product) => (
                      <ProductCard
-                        name={product.name}
+                        product={product}
                         key={product._id}
-                        id={product._id}
-                        img={product.img}
                     />
             ))
                 }
