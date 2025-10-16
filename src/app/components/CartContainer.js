@@ -1,8 +1,8 @@
 import { useAppContext } from "@/context/ShopContext";
 import ProductCard from "./ProductCard";
 
-const CartContainer = ({cart}) => {
-  const { loading, error } = useAppContext();
+const CartContainer = () => {
+  const { loading, error, cart } = useAppContext();
 
   console.log(cart);
   return (
