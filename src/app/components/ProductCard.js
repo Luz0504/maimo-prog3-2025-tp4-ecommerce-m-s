@@ -18,7 +18,7 @@ const ProductCard = ({product}) => {
       </div>
       <div>
         <h1 className="max-w-40 max-h-70 text-[0.90em] line-clamp-2">{product.name}</h1>
-        <p className="text-4xl">{product.price}</p>
+        <p className="text-4xl">${product.price}</p>
       </div>
       <Link
         href={`/product/${product._id}`}

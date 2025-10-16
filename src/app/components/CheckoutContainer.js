@@ -4,7 +4,7 @@ import { useAppContext } from "@/context/ShopContext";
 import { CheckoutForm } from "./FormCheckout";
 
 const CheckoutContainer = () => {
-  const { cart, addOrder } = useAppContext();
+  const { cart, addOrder, cartTotal } = useAppContext();
 
   const handlePlaceOrder = () => {
     console.log("my order");
@@ -28,6 +28,11 @@ const CheckoutContainer = () => {
               <p>{product.qty}</p>
             </div>
           ))}
+
+          <p>
+            Order total: ${cartTotal}
+          </p>
+
         </div>
         <button
           className="w-full h-10 bg-blue-500 text-white rounded-3xl hover:bg-blue-700 transition-colors duration-200 hover:cursor-pointer"
