@@ -19,6 +19,8 @@ export const AppContextProvider = ({ children }) => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  //${process.env.NEXT_PUBLIC_API_URL}
+  
   const addToCart = (name, price, img, _id, qty) => {
     let productToAdd = { name, price, img, _id, qty };
 
@@ -50,7 +52,7 @@ export const AppContextProvider = ({ children }) => {
     const getData = async () => {
       try {
         const response = await axios.get(
-          "https://maimo-prog3-2025-api-blank.vercel.app/products"
+        `${process.env.NEXT_PUBLIC_API_URL}/products`
         );
         const responseData = response.data.products;
         setData(responseData);
@@ -67,7 +69,7 @@ export const AppContextProvider = ({ children }) => {
     const getProduct = async () => {
       try {
         const response = await axios.get(
-          `https://maimo-prog3-2025-api-blank.vercel.app/products/${id}`
+          `${process.env.NEXT_PUBLIC_API_URL}/products/${id}`
         );
         setProduct(response.data.product);
         setLoading(false);
@@ -85,7 +87,7 @@ export const AppContextProvider = ({ children }) => {
     const getCategories = async () => {
       try {
         const response = await axios.get(
-          "https://maimo-prog3-2025-api-blank.vercel.app/categories"
+          `${process.env.NEXT_PUBLIC_API_URL}/categories`
         );
         setCategories(response.data.categories);
         setLoading(false);
@@ -100,7 +102,7 @@ export const AppContextProvider = ({ children }) => {
     const getSlug = async () => {
       try {
         const response = await axios.get(
-          `https://maimo-prog3-2025-api-blank.vercel.app/categories/${id}/products`
+          `${process.env.NEXT_PUBLIC_API_URL}/categories/${id}/products`
         );
         const responseData = response.data.products;
         setData(responseData);
@@ -138,7 +140,7 @@ export const AppContextProvider = ({ children }) => {
 
     try {
       const response = await axios.post(
-        "https://maimo-prog3-2025-api-blank.vercel.app/orders",
+        `${process.env.NEXT_PUBLIC_API_URL}/orders`,
         orderValues
       );
       return response
