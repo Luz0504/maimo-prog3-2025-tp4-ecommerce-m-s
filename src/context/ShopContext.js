@@ -141,7 +141,7 @@ export const AppContextProvider = ({ children }) => {
         "https://maimo-prog3-2025-api-blank.vercel.app/orders",
         orderValues
       );
-      return true
+      return response
     } catch (error) {
       console.log(error);
     }
