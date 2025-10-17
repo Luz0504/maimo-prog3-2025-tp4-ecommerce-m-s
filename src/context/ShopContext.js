@@ -19,6 +19,8 @@ export const AppContextProvider = ({ children }) => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  //${process.env.NEXT_PUBLIC_API_IRL}
+  
   const addToCart = (name, price, img, _id, qty) => {
     let productToAdd = { name, price, img, _id, qty };
 
