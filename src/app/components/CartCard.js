@@ -29,7 +29,7 @@ const CartCard = ({product}) => {
             <p className="text-2xl">{qty}</p>
             <button onClick={() => addToCart(product.name, product.price, product.img, product._id, 1)} className="text-2xl p-1 h-fit rounded-2xl border-2 border-black bg-fuchsia-400 hover:text-white cursor-pointer hover:bg-fuchsia-900">+</button>
         </section> 
-                            <p className="text-4xl mx-5 text-fuchsia-900">{product.price}</p>
+                            <p className="text-4xl mx-5 text-fuchsia-900">${product.price}</p>
                             <button onClick={() => removeFromCart(product._id)} className="w-fit cursor-pointer">
                     <Image
                     src={'/assets/blacktrash.svg'}

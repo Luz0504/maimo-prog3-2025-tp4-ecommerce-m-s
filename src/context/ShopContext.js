@@ -34,25 +34,6 @@ export const AppContextProvider = ({ children }) => {
     const filteredCart = cart.filter((cartitem) => cartitem._id !== _id);
 
     setCart([...filteredCart, productToAdd]);
-    /**
-         * 
-         *
-         let productToAdd = {}:
-
-         const findProduct = cart.find(
-         (productinCart) => productinCart._id === product._id
-         );
-
-         if(findProduct){
-            productToAdd = {...findProduct, qty:findProduct.qty + product.qty};
-         } else {
-            productToAdd = product;
-        }
-
-        const filteredCart = cart.filter()
-         */
-
-    //setCart([...cart, product])
   };
 
   const removeFromCart = (_id) => {
@@ -61,6 +42,11 @@ export const AppContextProvider = ({ children }) => {
   };
 
   const cartQty = cart.length;
+
+  const cartTotal = cart.reduce(
+    (acc, product) => acc + product.qty * product.price,
+    0
+  );
 
   const getAllProducts = () => {
     const getData = async () => {
@@ -135,11 +121,32 @@ export const AppContextProvider = ({ children }) => {
   }, [cart]);
 
   const addOrder = async (userValues) => {
+    const reducedCart = cart.map((product) => {
+      const prod = {
+        name: product.name,
+        _id: product._id,
+        qty: product.qty,
+      };
+
+      return prod;
+    });
+
     const orderValues = {
       user: userValues,
-      products: cart,
+      products: reducedCart,
+      total: cartTotal,
     };
     console.log("my order is", orderValues);
+
+    try {
+      const response = await axios.post(
+        "https://maimo-prog3-2025-api-blank.vercel.app/orders",
+        orderValues
+      );
+      return true
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -159,6 +166,7 @@ export const AppContextProvider = ({ children }) => {
         product,
         data,
         addOrder,
+        cartTotal,
       }}
     >
       {children}
