@@ -6,7 +6,7 @@ const CartContainer = () => {
 
   console.log(cart);
   return (
-      <div className="grid grid-cols-6 gap-x-30 p-3 text-1xl h-100">
+      <div className="grid grid-cols-6 gap-x-10 gap-y-5 py-10 text-1xl h-fit">
         {!loading &&
           cart.map((cartitem) => (
             <CartCard product={cartitem} key={cartitem._id} />

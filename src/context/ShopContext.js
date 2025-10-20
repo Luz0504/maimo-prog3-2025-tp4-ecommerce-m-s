@@ -24,7 +24,7 @@ export const AppContextProvider = ({ children }) => {
   const addToCart = (name, price, img, _id, qty) => {
     let productToAdd = { name, price, img, _id, qty };
 
-    const dupli = cart.find((cartitem) => cartitem._id === _id);
+    const dupli = cart.find((cartitem) => cartitem._id == _id);
 
     if (dupli) {
       dupli.qty += qty;
