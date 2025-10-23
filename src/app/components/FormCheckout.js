@@ -22,7 +22,7 @@ function validateUsername(value) {
 
 export const CheckoutForm = ({handleAddOrder}) => (
   <div className="px-10">
-    <h1 className="text-2xl font-semibold text-fuchsia-700 mb-2">Signup</h1>
+    <h1 className="text-2xl font-semibold text-fuchsia-700 mb-2">Tus Datos</h1>
 
     <Formik
       initialValues={{
@@ -38,7 +38,7 @@ export const CheckoutForm = ({handleAddOrder}) => (
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-white mb-1"
+              className="block font-medium text-white mb-1 text-2xl"
             >
               Email
             </label>
@@ -59,7 +59,7 @@ export const CheckoutForm = ({handleAddOrder}) => (
           <div>
             <label
               htmlFor="username"
-              className="block text-sm font-medium text-white mb-1"
+              className="block text-2xl font-medium text-white mb-1"
             >
               Usuario
             </label>
@@ -78,7 +78,9 @@ export const CheckoutForm = ({handleAddOrder}) => (
 
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-2 rounded-3xl hover:bg-blue-700 transition-colors duration-200 hover:cursor-pointer"
+            className="w-full bg-blue-500 text-white py-2 rounded-3xl
+             hover:bg-blue-700 transition-colors duration-200 hover:cursor-pointer
+             text-2xl"
           >
             Validar
           </button>

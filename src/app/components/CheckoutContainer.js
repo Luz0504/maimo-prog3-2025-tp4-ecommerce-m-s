@@ -19,19 +19,18 @@ const CheckoutContainer = () => {
       <div className="w-500">
         <CheckoutForm handleAddOrder={handleAddOrder} />
       </div>
-      <div className="border-2 border-white rounded-3xl p-5 flex flex-col w-500">
+      <div className="border-2 border-fuchsia-600 border-dotted rounded-3xl p-5 flex flex-col w-500">
         <div className="mb-10">
-          <h2>Pedido</h2>
+          <h2 className="text-2xl mb-2">Pedido</h2>
           {cart.map((product) => (
-            <div className="flex flex-row gap-4" key={product._id}>
+            <div className="flex flex-row gap-1" key={product._id}>
               <h3>{product.name}</h3>
-              <p>{product.qty}</p>
+              <p>({product.qty})</p>
             </div>
           ))}
 
-          <p>
-            Order total: ${cartTotal}
-          </p>
+          <p className="text-2xl mb-[-0.5em]">Total de la compra:</p>
+          <p className="text-5xl text-fuchsia-500">${cartTotal}</p>
 
         </div>
         <button

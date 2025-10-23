@@ -3,12 +3,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useAppContext } from "@/context/ShopContext";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 const NavBar = () => {
   const { cartQty } = useAppContext();
 
-  const { getAllCategories, getCategoryProducts, loading, error, categories } = useAppContext();
+  const { getAllCategories, getCategoryProducts, categories } = useAppContext();
   
     useEffect(() => {
       getAllCategories();
@@ -21,7 +21,7 @@ const NavBar = () => {
           GAMERZ STORE
         </h1>
       </Link>
-      <div className="flex justify-between items-center px-10 bg-blue-500 py-2 rounded-t-4xl">
+      <div className="flex justify-between items-center px-10 bg-blue-500 py-2 rounded-t-4xl ">
         <ul className="flex gap-6 text-[0.60em]">
            {
         categories.filter(cat => cat.type === "0").map(cat =>

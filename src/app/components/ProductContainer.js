@@ -13,10 +13,12 @@ const ProductContainer = ({id}) => {
 
 
   const { loading, error, product, categories, getOneProduct, cart} = useAppContext();
+  
 
   useEffect(() => {getOneProduct(id)},[]);
 
-    const isCart = cart.find((cartitem) => cartitem.id === id);
+    const isCart = cart.find((cartitem) => cartitem._id === product._id)
+    const qty = isCart?.qty ?? 0;
 
 
   return (
@@ -50,13 +52,14 @@ const ProductContainer = ({id}) => {
                   })}
                 </Link>
                 <h1 className="text-black text-3xl mb-2 max-w-125">{product.name}</h1>
-                <h2 className="text-4xl text-fuchsia-900 mt-5">{product.price}</h2>
+                <h2 className="text-4xl text-fuchsia-900 mt-5">${product.price}</h2>
               </div>
-              {isCart ? (
-                <QuitarCart id={id} />
-              ) : (
-                <AgregarCart key={product.id} name={product.name} price={product.price} img={product.img} id={id} />
-              )}
+             {
+              qty == 0?
+              <AgregarCart key={product._id} name={product.name} price={product.price} img={product.img} _id={product._id} />
+              :
+              <QuitarCart id={product._id}/>
+            }  
             </div>
           </section>
           <p className="italic text-gray-900 mx-10 my-10 text-2xl p-5 rounded-3xl border-4 border-dotted border-fuchsia-900">
