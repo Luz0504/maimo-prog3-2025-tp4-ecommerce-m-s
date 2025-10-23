@@ -20,17 +20,17 @@ const ProductContainer = ({id}) => {
     const isCart = cart.find((cartitem) => cartitem._id === product._id)
     const qty = isCart?.qty ?? 0;
 
-
   return (
     <>
       {!loading && (
         <div className="text-black">
           <Link href="/">
             <Image
-            src={"/assets/window-close.png"}
-            alt="Volver"
-            height={50}
-            width={50}/>
+              src={"/assets/window-close.png"}
+              alt="Volver"
+              height={50}
+              width={50}
+            />
           </Link>
           <section className="flex justify-center mb-5">
             <div className="min-h-100 min-w-100 flex items-center rounded-2xl border-2 border-black justify-center bg-fuchsia-300">
@@ -44,7 +44,7 @@ const ProductContainer = ({id}) => {
             <div className="flex flex-col ml-4 justify-around">
               <div>
                 <Link href={""} className="text-4xl">
-                    {product.categories.map((_id) => {
+                  {product.categories.map((_id) => {
                     const match = categories.find(
                       (cat) => cat._id === _id && cat.type === "0"
                     );
@@ -80,19 +80,22 @@ const ProductContainer = ({id}) => {
               </tr>
               <tr>
                 <td className=" p-2 border-r-4 border-fuchsia-900">Tamaño</td>
-                {
-                  typeof product.size === "object" ?
+                {typeof product.size === "object" ? (
                   <td className="px-5">
                     <ul className="flex gap-2.5">
-                    {product.size.map(s =>
-                      <div key={s} className="px-2 rounded-[0.25em] border-2 hover:bg-fuchsia-900 hover:text-white hover:border-white cursor-pointer">{s}</div>
-                    )}
+                      {product.size.map((s) => (
+                        <div
+                          key={s}
+                          className="px-2 rounded-[0.25em] border-2 hover:bg-fuchsia-900 hover:text-white hover:border-white cursor-pointer"
+                        >
+                          {s}
+                        </div>
+                      ))}
                     </ul>
                   </td>
-                  :
+                ) : (
                   <td className="p-2">{product.size}</td>
-                }
-                
+                )}
               </tr>
             </tbody>
           </table>

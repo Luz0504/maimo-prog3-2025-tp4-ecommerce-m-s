@@ -4,18 +4,26 @@ import Image from "next/image";
 import Link from "next/link";
 import { useAppContext } from "@/context/ShopContext";
 
-const CartCard = ({product}) => {
+const CartCard = ({ product }) => {
   const { cart, getOneProduct, addToCart, removeFromCart } = useAppContext();
-  const isCart = cart.find((cartitem) => cartitem._id === product._id)
+  const isCart = cart.find((cartitem) => cartitem._id === product._id);
   const qty = isCart?.qty ?? 0;
 
   return (
     <div className="col-span-3 flex bg-white rounded-2xl gap-1 border-black border-[2px] text-black transition-transform duration-300 ease-in-out hover:scale-105 items-center">
       <section className=" min-h-30 flex items-center">
-        <Image src={`/assets/${product.img}`} height={500} width={150} alt={product.name} className="max-w-40" />
+        <Image
+          src={`/assets/${product.img}`}
+          height={500}
+          width={150}
+          alt={product.name}
+          className="max-w-40"
+        />
       </section>
       <section>
-        <h1 className="max-w-150 max-h-70 text-[0.90em] mb-2">{product.name}</h1>
+        <h1 className="max-w-150 max-h-70 text-[0.90em] mb-2">
+          {product.name}
+        </h1>
         <Link
         href={`/product/${product._id}`}
         className="bg-blue-400 rounded-3xl border-black border-[2px] p-2 duration-100
