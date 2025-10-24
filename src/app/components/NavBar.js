@@ -34,7 +34,7 @@ const NavBar = () => {
             <Link href={"/cart"}>
               <li>
                 <Image
-                  src={"/assets/cart.png"}
+                  src={"/assets/shopping-cart.png"}
                   alt={"Your cart"}
                   height={30}
                   width={30}
