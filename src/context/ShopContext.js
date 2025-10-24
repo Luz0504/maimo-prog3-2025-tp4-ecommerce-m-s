@@ -183,16 +183,3 @@ export const useAppContext = () => {
 };
 
 export default ShopContext;
-
-//Obtener todos los productos
-//Obtener un producto
-//Obtener todos los productos de una categoria (useCallback)
-//Home o en pag de categoria => USEEFFECT Y llamar a la funcion en el context (axios)
-//Hay que capturar la URL del product
-//Category/slug para hacer el axios
-//PAGINA DE PRODUCTO, SINGLE. Customizar el producto. Cinco talles, con bullets, select, etc
-//ADDPRODUCT BOTON. AGREGA EL PRODUCTO EN EL STATE DEL CONTEXT (cart)
-//NO GENERAR COPIAS, SINO UNIDADES (EJ: Cuantity: 3)
-//Checkout, trae del context el CART y un boton que diga comprar
-//CREA EL PEDIDO EN BASE DE DATOS
-//SEND GRID, TE MANDA UN MAIL GRATIS CON EL PEDIDO
